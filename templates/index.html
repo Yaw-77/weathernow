@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherNow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="weather-clear">
+    <main class="app-shell">
+        <section class="weather-panel" aria-labelledby="app-title">
+            <div class="hero">
+                <div>
+                    <p class="eyebrow">Live Weather</p>
+                    <h1 id="app-title">WeatherNow</h1>
+                    <p class="intro">Search any city or use your location for current conditions and a short forecast.</p>
+                </div>
+                <div class="time-chip" id="local-time" aria-live="polite">--:--</div>
+            </div>
+
+            <form class="search-form" id="search-form" novalidate>
+                <label class="sr-only" for="city-input">Search for a city</label>
+                <div class="input-wrapper">
+                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input id="city-input" name="city" type="search" placeholder="Search for a city..." autocomplete="address-level2">
+                </div>
+                <button type="submit">Search</button>
+                <button type="button" class="secondary-button" id="location-button" aria-label="Use My Location" title="Use My Location">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20" style="margin-right: 8px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.242-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Use My Location
+                </button>
+            </form>
+
+            <div class="status" id="status" role="status" aria-live="polite"></div>
+
+            <section class="current-card is-empty" id="current-weather" aria-label="Current weather">
+                <div class="empty-state">
+                    <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="48" height="48" style="margin: 0 auto 12px; opacity: 0.6;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                    </svg>
+                    <p>Start with Accra, London, New York, Tokyo, Kumasi, or Lagos.</p>
+                </div>
+            </section>
+
+            <section class="forecast-section" aria-labelledby="forecast-title">
+                <div class="section-heading">
+                    <h2 id="forecast-title">Forecast</h2>
+                    <span id="forecast-meta">Next available days</span>
+                </div>
+                <div class="forecast-list" id="forecast-list"></div>
+            </section>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
